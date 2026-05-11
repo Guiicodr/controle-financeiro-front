@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import "./App.css"
+
 function App(){
 
     const [saldo, setSaldo] = useState(0)
@@ -47,40 +49,63 @@ function carregarDados(){
     }, [])
 
     return (
-        <div>
-            <h1>Controle Financeiro</h1>
-            <p>Saldo atual:  R$ {saldo}</p>
-        <h2>Transações</h2>
-            <form onSubmit={adicionarTransacoes}>
-                <input
+        <div className="page">
+            <main className="dashboard">
+              <header className="header">
+                <h1>Controle Financeiro</h1>
+                <p>Gerencie suas entradas, saídas e saldo atual.</p>
+              </header>
+
+              <section className="balance-card">
+                <span>Saldo atual</span>
+                <strong>R$ {saldo}</strong>
+              </section>
+
+              <section className="form-card">
+                <h2>Nova transação</h2>
+
+                <form onSubmit={adicionarTransacoes}>
+                  <input
                     type="text"
                     placeholder="Descrição"
                     value={descricao}
                     onChange={(e) => setDescricao(e.target.value)}
-                />
+                  />
 
-                <input
+                  <input
                     type="number"
                     placeholder="Valor"
                     value={valor}
                     onChange={(e) => setValor(e.target.value)}
-                />
+                  />
 
-                <select value={tipo} onChange={(e) => setTipo(e.target.value)} >
+                  <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
                     <option value="ENTRADA">Entrada</option>
                     <option value="SAIDA">Saída</option>
-                </select>
+                  </select>
 
-                <button type="submit">Adicionar</button>
-            </form>
-            <ul>
-                {transacoes.map((t, index) => (
+                  <button type="submit">Adicionar</button>
+                </form>
+              </section>
+
+              <section className="transactions-card">
+                <h2>Transações</h2>
+
+                <ul>
+                  {transacoes.map((t, index) => (
                     <li key={index}>
-                        {t.descricao} - R$ {t.valor} ({t.tipo})
+                      <div>
+                        <strong>{t.descricao}</strong>
+                        <span>{t.tipo}</span>
+                      </div>
+
+                      <p>R$ {t.valor}</p>
                     </li>
-                    ))}
-            </ul>
-        </div>
+                  ))}
+                </ul>
+              </section>
+            </main>
+          </div>
         )
 }
 export default App
