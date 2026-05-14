@@ -43,6 +43,12 @@ function carregarDados(){
         .then(response => response.json())
         .then(data => setTransacoes(data))
         }
+function deletarTransacao(id) {
+   fetch(`http://localhost:8080/transacoes/${id}`, {
+     method: "DELETE"
+   })
+     .then(() => carregarDados())
+ }
 
     useEffect(() => {
         carregarDados()
@@ -100,6 +106,9 @@ function carregarDados(){
                       </div>
 
                       <p>R$ {t.valor}</p>
+                      <button onClick={() => deletarTransacao(t.id)}>
+                        Excluir
+                      </button>
                     </li>
                   ))}
                 </ul>

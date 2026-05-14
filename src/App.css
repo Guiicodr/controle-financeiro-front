@@ -21,7 +21,7 @@ body {
 }
 
 .header p {
-    color: #f0f0f0;
+    color: #d1d1d1;
     margin-bottom: 30px;
 }
 
@@ -47,7 +47,7 @@ body {
 
 .form-card,
 .transactions-card {
-    background-color: gray;
+    background-color: #2f2f45;
     padding: 20px;
     border-radius: 12px;
     margin-bottom: 20px;
@@ -70,6 +70,7 @@ button {
 input,
 select {
     flex: 1;
+    color: white;
 }
 
 button {
@@ -87,6 +88,7 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    color: white;
 }
 
 li {
@@ -108,6 +110,6 @@ li div {
 }
 
 li span {
-    color: #777;
+    color: #cfcfcf;
     font-size: 14px;
 }
